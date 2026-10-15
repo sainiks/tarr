@@ -1,0 +1,8 @@
+{
+  "name": "SinghWorks-quote-storefront",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SinghWorks industrial parts storefront with server-side quote email delivery",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
