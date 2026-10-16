@@ -3,20 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#172630" />
+  <meta name="theme-color" content="#172630" id="theme-color" />
   <meta name="description" content="Precision gear systems and industrial machine parts. Find your component and request a fast, tailored quotation." />
   <title>SinghWorks — Motion, engineered.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Resolve the theme before first paint so a dark-mode choice never flashes light.
+    (function () {
+      var stored;
+      try { stored = localStorage.getItem('singhworks-theme'); } catch (e) { stored = null; }
+      var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      var meta = document.querySelector('#theme-color');
+      if (meta) meta.setAttribute('content', dark ? '#0f171b' : '#172630');
+    })();
+  </script>
 </head>
 <body>
   <div class="announcement"><span class="live-dot"></span><span class="announcement-long">GEARS · BEARINGS · POWER TRANSMISSION <span class="announcement-sep">/</span> PARTS IDENTIFICATION FOR THE SHOP FLOOR</span><span class="announcement-short">GEAR PARTS / INDUSTRIAL SUPPLY</span><a href="#contact">Talk to a specialist <span>↗</span></a></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Singh home"><span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M20 3h8l1.4 5.5a16 16 0 0 1 3.7 1.5l4.9-2.9 5.7 5.7-2.9 4.9a16 16 0 0 1 1.5 3.7L48 23v8l-5.5 1.4a16 16 0 0 1-1.5 3.7l2.9 4.9-5.7 5.7-4.9-2.9a16 16 0 0 1-3.7 1.5L28 51h-8l-1.4-5.5a16 16 0 0 1-3.7-1.5L10 46.9l-5.7-5.7 2.9-4.9a16 16 0 0 1-1.5-3.7L0 31v-8l5.5-1.4A16 16 0 0 1 7 17.9l-2.9-4.9L9.8 7.3l4.9 2.9a16 16 0 0 1 3.7-1.5L20 3Z" transform="translate(0 -3)"/><circle cx="24" cy="24" r="8"/></svg></span><span>Singh<span class="brand-light">WORKS</span><small>INDUSTRIAL SUPPLY CO.</small></span></a>
     <nav class="main-nav" aria-label="Main navigation"><a href="#catalog">Products</a><a href="#capabilities">Capabilities</a><a href="#about">About us</a></nav>
-    <div class="header-actions"><button class="header-phone specialist-link" data-open-quote>Parts desk <span>↗</span></button><button class="button button-dark header-quote" data-open-quote>Start a quote <span>↗</span></button><button class="menu-toggle" aria-label="Open menu">☰</button></div>
+    <div class="header-actions"><button class="header-phone specialist-link" data-open-quote>Parts desk <span>↗</span></button><button class="button button-dark header-quote" data-open-quote>Start a quote <span>↗</span></button><button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" title="Switch theme"><span class="theme-toggle-icon" aria-hidden="true">☾</span></button><button class="menu-toggle" aria-label="Open menu">☰</button></div>
   </header>
 
   <main id="top">

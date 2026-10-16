@@ -331,3 +331,208 @@ p{line-height:1.7}
 
 .hero-redesign .finder-gear video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.82) contrast(1.04) brightness(.84); }
 .hero-redesign .finder-gear img { animation: none; }
+
+/* Theme toggle control, matched to the header's square editorial buttons. */
+.theme-toggle {
+  flex: 0 0 auto;
+  width: 38px; height: 38px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 0;
+  line-height: 1;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.theme-toggle:hover { background: #00000010; }
+.theme-toggle-icon { font-size: 16px; }
+.theme-toggle:focus-visible { outline: 2px solid #D97955; outline-offset: 3px; }
+@media (max-width: 700px) {
+  .theme-toggle { width: 34px; height: 34px; }
+  .theme-toggle-icon { font-size: 15px; }
+}
+
+/* ---------------------------------------------------------------------------
+   Dark theme. The storefront is a light-first design with a dark hero and
+   hand-picked hex values throughout, so the theme re-declares the shared
+   tokens and then re-points each light surface to a dark equivalent.
+   Everything is scoped to html[data-theme="dark"] so light mode is untouched.
+--------------------------------------------------------------------------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #E8EDE9;
+  --forest: #0B1216;
+  --forest2: #1B2A33;
+  --paper: #0E161B;
+  --muted: #8A969B;
+  --line: #2A353B;
+}
+html[data-theme="dark"] body { background: var(--paper); color: var(--ink); }
+html[data-theme="dark"] .theme-toggle:hover { background: #ffffff12; }
+
+/* Section and panel surfaces. */
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .catalog-explorer,
+html[data-theme="dark"] .site-footer,
+html[data-theme="dark"] .quote-modal-wide { background: #101A20; }
+html[data-theme="dark"] .announcement { background: #0B1216; color: #C7CFD2; }
+html[data-theme="dark"] .explorer-layout { background: #0B1216; }
+html[data-theme="dark"] .taxonomy-sidebar { background: #131D23; }
+html[data-theme="dark"] .explorer-search,
+html[data-theme="dark"] .finder-input { background: #0B1216; }
+html[data-theme="dark"] .category-overview-card { background: #141F26; }
+html[data-theme="dark"] .category-overview-card:hover { background: #18242C; }
+html[data-theme="dark"] .finder-help,
+html[data-theme="dark"] .sidebar-help,
+html[data-theme="dark"] .fit-note { background: #18242C; }
+html[data-theme="dark"] .tree-category.selected { background: #1B2830; }
+html[data-theme="dark"] .tree-category:hover,
+html[data-theme="dark"] .subcategory-row:hover,
+html[data-theme="dark"] .model-row:hover,
+html[data-theme="dark"] .model-row.model-highlight,
+html[data-theme="dark"] .search-result:hover { background: #18242C; }
+html[data-theme="dark"] .mechanism-index { background: #0E161B; }
+html[data-theme="dark"] .mechanism-card { background: #141F26; color: #E8EDE9; }
+html[data-theme="dark"] .mechanism-card:hover { background: #1A262D; }
+html[data-theme="dark"] .mechanism-feature { background: #16241C; }
+html[data-theme="dark"] .mechanism-feature:hover { background: #1D2E24; }
+html[data-theme="dark"] .explorer-search kbd,
+html[data-theme="dark"] .search-box kbd { background: #1E2930; color: #9AA6AC; }
+html[data-theme="dark"] .product-index { background: #0B1216cc; }
+html[data-theme="dark"] .visual-gear,
+html[data-theme="dark"] .visual-spur,
+html[data-theme="dark"] .visual-bearing,
+html[data-theme="dark"] .visual-block,
+html[data-theme="dark"] .visual-drive,
+html[data-theme="dark"] .visual-custom,
+html[data-theme="dark"] .belt-art b,
+html[data-theme="dark"] .belt-art span { background: #1A242A; }
+html[data-theme="dark"] .belt-illus span { background: #26313A; }
+html[data-theme="dark"] .block-illus:before,
+html[data-theme="dark"] .block-illus:after { background: #222C33; }
+html[data-theme="dark"] .bearing-illus:before,
+html[data-theme="dark"] .bearing-illus:after { background: #2A343B; }
+html[data-theme="dark"] .button-dark { background: #26343C; }
+html[data-theme="dark"] .button-dark:hover { background: #33454F; }
+
+/* Hairline borders across the catalog and catalog-adjacent chrome. */
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .taxonomy-breadcrumb,
+html[data-theme="dark"] .subcategory-list,
+html[data-theme="dark"] .subcategory-row,
+html[data-theme="dark"] .series-toolbar,
+html[data-theme="dark"] .model-row,
+html[data-theme="dark"] .search-result-list,
+html[data-theme="dark"] .search-result,
+html[data-theme="dark"] .explorer-search,
+html[data-theme="dark"] .explorer-layout,
+html[data-theme="dark"] .taxonomy-sidebar,
+html[data-theme="dark"] .category-overview-card,
+html[data-theme="dark"] .results-stamp,
+html[data-theme="dark"] .product-visual,
+html[data-theme="dark"] .mechanism-card,
+html[data-theme="dark"] .finder-input,
+html[data-theme="dark"] .model-quote,
+html[data-theme="dark"] .back-to-systems,
+html[data-theme="dark"] .help-icon { border-color: #2A353B; }
+
+/* Form controls. */
+html[data-theme="dark"] .form-grid input,
+html[data-theme="dark"] .form-grid textarea,
+html[data-theme="dark"] .quote-form-panel .form-grid input { background: #0B1216; color: #E8EDE9; border-color: #2A353B; }
+html[data-theme="dark"] .form-grid input::placeholder,
+html[data-theme="dark"] .explorer-search input::placeholder,
+html[data-theme="dark"] .finder-input input::placeholder { color: #7C888E; }
+
+/* Primary copy. */
+html[data-theme="dark"] .tree-category,
+html[data-theme="dark"] .subcategory-row,
+html[data-theme="dark"] .search-result,
+html[data-theme="dark"] .search-result > b,
+html[data-theme="dark"] .results-intro h3,
+html[data-theme="dark"] .category-overview-card,
+html[data-theme="dark"] .model-name h4,
+html[data-theme="dark"] .explorer-search input,
+html[data-theme="dark"] .finder-input input,
+html[data-theme="dark"] .brand,
+html[data-theme="dark"] .brand-mark { color: #E8EDE9; }
+
+/* Secondary copy. */
+html[data-theme="dark"] .main-nav,
+html[data-theme="dark"] .main-nav a,
+html[data-theme="dark"] .model-quote,
+html[data-theme="dark"] .back-to-systems,
+html[data-theme="dark"] .footer-links,
+html[data-theme="dark"] .specialist-link,
+html[data-theme="dark"] .header-phone,
+html[data-theme="dark"] .taxonomy-breadcrumb,
+html[data-theme="dark"] .taxonomy-breadcrumb #breadcrumb-subcategory,
+html[data-theme="dark"] .taxonomy-breadcrumb button.crumb-current,
+html[data-theme="dark"] .form-grid label,
+html[data-theme="dark"] .quote-form-panel .form-grid label,
+html[data-theme="dark"] .fit-note b { color: #B7C1C5; }
+
+/* Muted labels and helper text. */
+html[data-theme="dark"] .explorer-heading > p,
+html[data-theme="dark"] .results-intro p,
+html[data-theme="dark"] .catalog-data-note,
+html[data-theme="dark"] .series-toolbar,
+html[data-theme="dark"] .overview-subcats,
+html[data-theme="dark"] .overview-count,
+html[data-theme="dark"] .overview-index i,
+html[data-theme="dark"] .tree-name small,
+html[data-theme="dark"] .tree-index,
+html[data-theme="dark"] .sidebar-label,
+html[data-theme="dark"] .sidebar-help small,
+html[data-theme="dark"] .model-name small,
+html[data-theme="dark"] .model-specs small,
+html[data-theme="dark"] .model-specs span,
+html[data-theme="dark"] .subcat-name small,
+html[data-theme="dark"] .subcat-model-preview,
+html[data-theme="dark"] .fit-note p,
+html[data-theme="dark"] .results-stamp,
+html[data-theme="dark"] .search-result > span:nth-child(3),
+html[data-theme="dark"] .explorer-search > span,
+html[data-theme="dark"] .explorer-search > button,
+html[data-theme="dark"] .finder-card-top,
+html[data-theme="dark"] .finder-tab,
+html[data-theme="dark"] .finder-foot,
+html[data-theme="dark"] .finder-input > span,
+html[data-theme="dark"] .finder-help small,
+html[data-theme="dark"] .empty-search p,
+html[data-theme="dark"] .about-content > p,
+html[data-theme="dark"] .quote-intro-copy,
+html[data-theme="dark"] .mechanism-heading > p,
+html[data-theme="dark"] .mechanism-code,
+html[data-theme="dark"] .mechanism-sub,
+html[data-theme="dark"] .copyright { color: #8A969B; }
+
+/* Warm accent text reads too low on charcoal; lift it on dark. */
+html[data-theme="dark"] .results-kicker,
+html[data-theme="dark"] .subcat-index,
+html[data-theme="dark"] .overview-index,
+html[data-theme="dark"] .overview-count i,
+html[data-theme="dark"] .model-number,
+html[data-theme="dark"] .result-kind,
+html[data-theme="dark"] .subcat-arrow,
+html[data-theme="dark"] .tree-arrow,
+html[data-theme="dark"] .fit-note > span,
+html[data-theme="dark"] .specialist-link span,
+html[data-theme="dark"] .about-stats b span,
+html[data-theme="dark"] .product-spec b,
+html[data-theme="dark"] .product-type,
+html[data-theme="dark"] .empty-search > span,
+html[data-theme="dark"] .sidebar-label span,
+html[data-theme="dark"] .sidebar-help button,
+html[data-theme="dark"] .taxonomy-breadcrumb button,
+html[data-theme="dark"] .form-grid label > span,
+html[data-theme="dark"] .section-heading h2 em,
+html[data-theme="dark"] .about h2 em,
+html[data-theme="dark"] .explorer-heading h2 em,
+html[data-theme="dark"] .quote-modal h2 em,
+html[data-theme="dark"] .mechanism-heading h2 em { color: #E29272; }
+
+html[data-theme="dark"] .finder-tab.active { background: #26343C; color: #E8EDE9; }
+html[data-theme="dark"] .whatsapp-link { color: #7FC79E; }
+html[data-theme="dark"] .text-link { border-bottom-color: #55636A; }
+html[data-theme="dark"] .brand-mark circle { fill: #101A20; }

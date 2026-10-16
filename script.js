@@ -288,3 +288,37 @@ if (heroGearVideo) {
     else syncHeroGearMotion(true);
   });
 }
+
+// Theme toggle. The inline script in <head> applies the initial theme before
+// paint; this keeps the control, storage and the OS preference in sync after.
+const themeToggle = document.querySelector('#theme-toggle');
+const themeMeta = document.querySelector('#theme-color');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function storedTheme() {
+  try { return localStorage.getItem('singhworks-theme'); } catch (error) { return null; }
+}
+function applyTheme(theme, persist) {
+  const dark = theme === 'dark';
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  if (themeMeta) themeMeta.setAttribute('content', dark ? '#0f171b' : '#172630');
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-pressed', String(dark));
+    themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    const icon = themeToggle.querySelector('.theme-toggle-icon');
+    if (icon) icon.textContent = dark ? '☀' : '☾';
+  }
+  if (persist) {
+    try { localStorage.setItem('singhworks-theme', dark ? 'dark' : 'light'); } catch (error) { /* storage unavailable: keep the in-memory choice */ }
+  }
+}
+applyTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light', false);
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
+  });
+}
+prefersDark.addEventListener?.('change', event => {
+  if (storedTheme()) return; // an explicit choice outranks the OS setting
+  applyTheme(event.matches ? 'dark' : 'light', false);
+});
